@@ -56,8 +56,8 @@ class OtherEventCard extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: event.rating > 0
-                  ? Row(
+              child: 
+                   Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Icon(
@@ -74,14 +74,7 @@ class OtherEventCard extends StatelessWidget {
                         ),
                       ],
                     )
-                  : Text(
-                      'Belum ada rating',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.black87,
-                      ),
-                    ),
+                  
             ),
           ],
         ),

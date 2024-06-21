@@ -92,7 +92,15 @@ class _ReviewListScreenState extends State<ReviewListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ulasan Event'),
+        backgroundColor: Color(0xFF30244D),
+      leading: IconButton(
+      icon: Icon(Icons.arrow_back),
+      onPressed: () {
+        // Handle back button press
+        Navigator.pop(context);
+      },
+      color: Color(0xFFCBED54), // Warna tombol back
+    ),
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
@@ -104,9 +112,10 @@ class _ReviewListScreenState extends State<ReviewListScreen> {
                     itemBuilder: (context, index) {
                       final review = reviews[index];
                       return Card(
+                        color: Color(0xFF30244D),
                         child: ListTile(
-                          title: Text(review.userName),
-                          subtitle: Text(review.comment),
+                          title: Text(review.userName,style: TextStyle(color: Color(0xFFCBED54)),),
+                          subtitle: Text(review.comment,style: TextStyle(color: Color(0xFFCBED54))),
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
@@ -114,12 +123,12 @@ class _ReviewListScreenState extends State<ReviewListScreen> {
                               Text(review.rating.toString()),
                               if (canEditReview(review.userId))
                                 IconButton(
-                                  icon: Icon(Icons.edit),
+                                  icon: Icon(Icons.edit,color: Color(0xFFCBED54),),
                                   onPressed: () => editReview(review),
                                 ),
                               if (canEditReview(review.userId))
                                 IconButton(
-                                  icon: Icon(Icons.delete),
+                                  icon: Icon(Icons.delete,color: Color(0xFFCBED54)),
                                   onPressed: () => deleteReview(review.id),
                                 ),
                             ],

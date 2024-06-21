@@ -17,6 +17,7 @@ class HomeScreen extends StatelessWidget {
       print('Error fetching events: $error');  // Print error if any
     });
   }
+  
 
   @override
 Widget build(BuildContext context) {
@@ -42,7 +43,7 @@ Widget build(BuildContext context) {
         List<Event> otherEvents = events
             .where((event) => !event.isPast())
             .toList();
-        print('kontol');print(topEvents);
+        print('');print(topEvents);
 
         return ListView(
           children: <Widget>[

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new_eventfinder/ui/screens/userEvents_screen.dart';
+import 'package:new_eventfinder/ui/screens/welcome_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:new_eventfinder/services/userProfile.dart';
 import 'package:new_eventfinder/ui/screens/editProfile_screen.dart';
@@ -112,6 +113,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => UserEventsScreen(uid: uid!)),
+                      );
+                    },
+                  ),
+                  SizedBox(height: 12.0),
+                  ListTile(
+                    leading: Icon(Icons.logout, color: Color(0xFFCBED54)),
+                    title: Text('keluar', style: TextStyle(color: Color(0xFFCBED54))),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => WelcomeScreen()),
                       );
                     },
                   ),

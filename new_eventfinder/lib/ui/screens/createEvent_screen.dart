@@ -82,6 +82,8 @@ class _CreateEventScreenState extends State<CreateEventScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Event saved successfully')),
       );
+      // Navigasi ke halaman home setelah menyimpan event
+      Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(e.toString())),

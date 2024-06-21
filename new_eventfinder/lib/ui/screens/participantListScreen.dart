@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:new_eventfinder/model/participant.dart';
 import 'package:new_eventfinder/services/participantService.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -112,11 +113,13 @@ class _ParticipantListScreenState extends State<ParticipantListScreen> with Sing
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Partisipan'),
+        title: Text('Partisipan',style: TextStyle(color:Color(0xFFCBED54)  ) ,),
+       backgroundColor: Color(0xFF30244D), 
         bottom: TabBar(
+          labelColor:Color(0xFFCBED54)  ,
           controller: _tabController,
           tabs: [
-            Tab(text: 'Pending'),
+            Tab(text: 'Pending',),
             Tab(text: 'Accepted'),
             Tab(text: 'Rejected'),
             Tab(text: 'Cancelled'),
@@ -143,6 +146,7 @@ class _ParticipantListScreenState extends State<ParticipantListScreen> with Sing
       itemCount: participants.length,
       itemBuilder: (context, index) {
         return Card(
+          color: Color(0xFF30244D),  
           child: Padding(
             padding: EdgeInsets.all(16.0),
             child: Column(
@@ -153,11 +157,12 @@ class _ParticipantListScreenState extends State<ParticipantListScreen> with Sing
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
+                    color: Color(0xFFCBED54)
                   ),
                 ),
                 SizedBox(height: 8.0),
-                Text('Nomor Telepon: ${participants[index].phone}'),
-                Text('Status: ${participants[index].status}'),
+                Text('Nomor Telepon: ${participants[index].phone}',style: TextStyle(color:Color(0xFFCBED54))),
+                Text('Status: ${participants[index].status}',style: TextStyle(color:Color(0xFFCBED54))),
                 SizedBox(height: 16.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -186,6 +191,7 @@ class _ParticipantListScreenState extends State<ParticipantListScreen> with Sing
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
+                           color: Color(0xFFCBED54)
                         ),
                       ),
                   ],

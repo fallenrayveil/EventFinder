@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:new_eventfinder/config/config.dart';
 import 'package:new_eventfinder/model/events.dart';
 import 'package:new_eventfinder/services/eventservice.dart';
@@ -29,8 +30,17 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       
       appBar: AppBar(
-        title: Text('Search Events'),
+        title: Text('Search Events',style:TextStyle(color:Color(0xFFCBED54)),),
+        backgroundColor: Color(0xFF30244D), 
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          color: const Color(0xFFCBED54),
+        ),
       ),
       body: Column(
         children: [
@@ -39,9 +49,10 @@ class _SearchScreenState extends State<SearchScreen> {
             child: TextField(
               controller: _searchController,
               decoration: InputDecoration(
+                hintStyle: TextStyle(color:Color(0xFFCBED54)),
                 hintText: 'Search events...',
                 suffixIcon: IconButton(
-                  icon: Icon(Icons.search),
+                  icon: Icon(Icons.search,),
                   onPressed: () {
                     _searchEvents(_searchController.text);
                   },
@@ -88,9 +99,10 @@ class EventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Color(0xFF30244D),
       child: ListTile(
-        title: Text(event.title),
-        subtitle: Text('${event.date}\nOrganizer: ${event.organizerType}\nCategory: ${event.category}'),
+        title: Text(event.title,style:TextStyle(color:Color(0xFFCBED54))),
+        subtitle: Text('${event.date}\nOrganizer: ${event.organizerType}\nCategory: ${event.category}',style:TextStyle(color:Color(0xFFCBED54))),
         leading: Image.network(Config.apiUrl + event.imageUrl),
         onTap: () {
           Navigator.push(

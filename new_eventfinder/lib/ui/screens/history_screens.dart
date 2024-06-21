@@ -31,11 +31,13 @@ class _HistoryScreenState extends State<HistoryScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('History'),
+        title: Text('History',style:TextStyle(color:Color(0xFFCBED54))),
+         backgroundColor: Color(0xFF30244D),
         bottom: TabBar(
           controller: _tabController,
+          labelStyle: TextStyle(color: Color(0xFFCBED54)),
           tabs: [
-            Tab(text: 'Mendatang'),
+            Tab(text: 'Mendatang',),
             Tab(text: 'Selesai'),
             Tab(text: 'Batal'),
           ],
@@ -154,9 +156,11 @@ class EventCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color:  Color(0xFF30244D),
       child: ListTile(
-        title: Text(event.title),
-        subtitle: Text('${event.date}\nOrganizer: ${event.organizerType}\nStatus: ${event.participantStatus}'),
+        
+        title: Text(event.title,style: TextStyle(color:Color(0xFFCBED54)),),
+        subtitle: Text('${event.date}\nOrganizer: ${event.organizerType}\nStatus: ${event.participantStatus}',style: TextStyle(color:Color(0xFFCBED54))),
         leading: Image.network(Config.apiUrl + event.imageUrl),
         onTap: () {
           Navigator.push(

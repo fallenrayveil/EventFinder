@@ -101,10 +101,15 @@ class _UserEventsScreenState extends State<UserEventsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Your Events'),
-        backgroundColor: Color(0xFF30244D),
-      ),
+      appBar: AppBar(backgroundColor: Color(0xFF30244D),
+      leading: IconButton(
+      icon: Icon(Icons.arrow_back),
+      onPressed: () {
+        // Handle back button press
+        Navigator.pop(context);
+      },
+      color: Color(0xFFCBED54), // Warna tombol back
+    ),),
       body: FutureBuilder<List<Event>>(
         future: futureEvents,
         builder: (context, snapshot) {

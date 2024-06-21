@@ -90,21 +90,33 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:  Color(0xFF30244D),
       appBar: AppBar(
-        title: Text(_isEditing ? 'Edit Ulasan' : 'Tambah Ulasan'),
+        title: Text(_isEditing ? 'Edit Ulasan' : 'Tambah Ulasan',style: TextStyle(color: Color(0xFFCBED54)),),
+        backgroundColor:  Color(0xFF30244D),
+        
         actions: [
           if (_isEditing)
             IconButton(
-              icon: Icon(Icons.close),
+              icon: Icon(Icons.close,color: Color(0xFFCBED54),),
               onPressed: _stopEditing,
             ),
+            
         ],
+        leading: IconButton(
+      icon: Icon(Icons.arrow_back),
+      onPressed: () {
+        // Handle back button press
+        Navigator.pop(context);
+      },
+      color: Color(0xFFCBED54), // Warna tombol back
+    ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Text('Rating', style: TextStyle(fontSize: 18)),
+            Text('Rating', style: TextStyle(fontSize: 18, color: Color(0xFFCBED54))),
             RatingBar.builder(
               initialRating: _rating,
               minRating: 1,
@@ -120,8 +132,9 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
             ),
             SizedBox(height: 16),
             TextField(
+              style: TextStyle( color: Color(0xFFCBED54)),
               controller: _commentController,
-              decoration: InputDecoration(labelText: 'Komentar'),
+              decoration: InputDecoration(labelText: 'Komentar',labelStyle: TextStyle( color: Color(0xFFCBED54))),
               maxLines: 3,
             ),
             SizedBox(height: 16),
@@ -135,6 +148,9 @@ class _AddReviewScreenState extends State<AddReviewScreen> {
             ElevatedButton(
               onPressed:(){ _submitReview();} , // Disable if editing
               child: Text(_isEditing ?  'Kirim Ulasan': 'Berhenti Edit' ),
+              style:ElevatedButton.styleFrom(
+                 backgroundColor: Color(0xFFCBED54)
+              ),
             ),
           ],
         ),

@@ -59,12 +59,17 @@ class _CalendarScreenState extends State<CalendarScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF30244D),
       appBar: AppBar(
-        title: Text('Kalender Acara'),
+        backgroundColor: Color(0xFF30244D),
+        title: Text('Kalender Acara',style:TextStyle(color: Color(0xFFCBED54)),),
       ),
       body: Column(
         children: [
           TableCalendar(
+            headerStyle:HeaderStyle(titleTextStyle: TextStyle(color: Color(0xFFCBED54))) ,
+            daysOfWeekStyle: DaysOfWeekStyle(weekdayStyle: TextStyle(color: Color(0xFFCBED54))),
+    
             firstDay: DateTime.utc(2020, 1, 1),
             lastDay: DateTime.utc(2030, 12, 31),
             focusedDay: _focusedDay,
@@ -103,6 +108,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
               weekendTextStyle: TextStyle(color: Color(0xFFCBED54)),
               selectedTextStyle: TextStyle(color: Colors.white),
               todayTextStyle: TextStyle(color: Colors.white),
+              markerDecoration: BoxDecoration(color: Color(0xFFCBED54),shape:BoxShape.circle),
+              
             ),
           ),
           const SizedBox(height: 8.0),
@@ -113,8 +120,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
                     itemBuilder: (context, index) {
                       UserHistory event = _selectedEvents[index];
                       return ListTile(
-                        title: Text(event.title),
-                        subtitle: Text('${DateFormat('dd/MM/yyyy HH:mm').format(event.date)} - ${event.status}'),
+                        title: Text(event.title,style: TextStyle(color: Color(0xFFCBED54)),),
+                        subtitle: Text('${DateFormat('dd/MM/yyyy HH:mm').format(event.date)} - ${event.status}',style: TextStyle(color: Color(0xFFCBED54)),),
                       );
                     },
                   )

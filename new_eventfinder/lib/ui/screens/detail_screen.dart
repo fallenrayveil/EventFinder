@@ -160,9 +160,9 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         await ParticipantService.updateParticipantStatus(existingParticipant['id'], 'pending'); // Assuming 'id' is the field name for participant ID
       } else {
         // If the participant is not already in the list, add them as a new participant
-        print('JANCOKKKK');
+        
         UserProfile profile = await ProfileService.fetchUserProfile(uid);
-        print('JANCOKKKK');
+        
 
         await ParticipantService.addParticipant(
           eventId: widget.event.id,
@@ -247,9 +247,17 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+     backgroundColor:  Color(0xFF30244D),
       appBar: AppBar(
-        title: Text(widget.event.title),
-      ),
+      backgroundColor: Color(0xFF30244D),
+      leading: IconButton(
+      icon: Icon(Icons.arrow_back),
+      onPressed: () {
+        // Handle back button press
+        Navigator.pop(context);
+      },
+      color: Color(0xFFCBED54), // Warna tombol back
+    ),),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
           : ListView(
@@ -263,6 +271,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                     color: Color(0xFFCBED54),
                   ),
                 ),
+                
                 SizedBox(height: 16.0),
                 Row(
                   children: <Widget>[
@@ -390,6 +399,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                 ),
                 SizedBox(height: 16.0),
                 ElevatedButton(
+                  
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -397,15 +407,23 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                         builder: (context) => ParticipantListScreen(eventId: widget.event.id),
                       ),
                     );
+                    
                   },
                   child: Text('Lihat Partisipan'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFFCBED54)
+                  ),
                 ),
                 SizedBox(height: 16.0),
                 if (currentParticipants < int.parse(widget.event.capacity) || int.parse(widget.event.capacity) == 0)
                   if (currentUserId != widget.event.uid)
                     ElevatedButton(
+                      
                       onPressed:  _joinOrCancelEvent ,
                       child: Text(isJoined ? 'Batal' : 'Join'),
+                       style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFFCBED54)
+                  ),
                     )
                   else
                     Container(),

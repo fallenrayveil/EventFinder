@@ -134,9 +134,17 @@ class _EditEventScreenState extends State<EditEventScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor:Color(0xFF30244D),
       appBar: AppBar(
-        title: Text('Edit Event'),
         backgroundColor: Color(0xFF30244D),
+      leading: IconButton(
+      icon: Icon(Icons.arrow_back),
+      onPressed: () {
+        // Handle back button press
+        Navigator.pop(context);
+      },
+      color: Color(0xFFCBED54), // Warna tombol back
+    ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -168,29 +176,33 @@ class _EditEventScreenState extends State<EditEventScreen> {
               ),
               TextFormField(
                 initialValue: title,
-                decoration: InputDecoration(labelText: 'Title'),
+                decoration: InputDecoration(labelText: 'Title',labelStyle: TextStyle(color: Color(0xFFCBED54))),
                 validator: (value) => value!.isEmpty ? 'Please enter a title' : null,
                 onSaved: (value) => title = value!,
+                style: TextStyle(color: Color(0xFFCBED54)),
               ),
               TextFormField(
                 initialValue: description,
                 maxLines: 5,
-                decoration: InputDecoration(labelText: 'Description'),
+                decoration: InputDecoration(labelText: 'Description',labelStyle: TextStyle(color: Color(0xFFCBED54))),
                 validator: (value) => value!.isEmpty ? 'Please enter a description' : null,
-                onSaved: (value) => description = value!,
+                onSaved: (value) => description = value!,style: TextStyle(color: Color(0xFFCBED54)),
               ),
               TextFormField(
                 readOnly: true,
                 decoration: InputDecoration(
                   labelText: 'Date',
+                  labelStyle: TextStyle(color: Color(0xFFCBED54)),
                   suffixIcon: IconButton(
-                    icon: Icon(Icons.calendar_today),
+                    icon: Icon(Icons.calendar_today,color: Color(0xFFCBED54)),
                     onPressed: () => _selectDate(context),
                   ),
                 ),
+                style: TextStyle(color: Color(0xFFCBED54)),
                 validator: (value) => value!.isEmpty ? 'Please enter a date' : null,
                 onTap: () => _selectDate(context),
                 controller: TextEditingController(
+                    
                     text: _selectedDate != null
                         ? DateFormat('dd/MM/yyyy HH:mm').format(_selectedDate!)
                         : ''),
@@ -239,8 +251,9 @@ class _EditEventScreenState extends State<EditEventScreen> {
                 dropdownColor: Color(0xFF30244D),
               ),
               CheckboxListTile(
-                title: Text('Has Participant Limit?'),
+                title: Text('Has Participant Limit?',style: TextStyle(color: Color(0xFFCBED54))),
                 value: _hasParticipantLimit,
+                
                 onChanged: (value) {
                   setState(() {
                     _hasParticipantLimit = value!;
@@ -254,25 +267,28 @@ class _EditEventScreenState extends State<EditEventScreen> {
               if (_hasParticipantLimit)
                 TextFormField(
                   initialValue: capacity,
-                  decoration: InputDecoration(labelText: 'Capacity'),
+                  decoration: InputDecoration(labelText: 'Capacity',labelStyle: TextStyle(color: Color(0xFFCBED54))),
                   validator: (value) => value!.isEmpty ? 'Please enter a capacity' : null,
                   onSaved: (value) => capacity = value!,
+                  style: TextStyle(color: Color(0xFFCBED54))
                 ),
               TextFormField(
                 initialValue: mapsUrl,
-                decoration: InputDecoration(labelText: 'Google Maps URL'),
+                decoration: InputDecoration(labelText: 'Google Maps URL',labelStyle: TextStyle(color: Color(0xFFCBED54))),
                 validator: (value) => value!.isEmpty ? 'Please enter a Google Maps URL' : null,
                 onSaved: (value) => mapsUrl = value!,
+                style: TextStyle(color: Color(0xFFCBED54))
               ),
               TextFormField(
                 initialValue: location,
-                decoration: InputDecoration(labelText: 'Location'),
+                decoration: InputDecoration(labelText: 'Location',labelStyle: TextStyle(color: Color(0xFFCBED54))),
                 validator: (value) => value!.isEmpty ? 'Please enter a Location' : null,
                 onSaved: (value) => location = value!,
+                style: TextStyle(color: Color(0xFFCBED54))
               ),
               DropdownButtonFormField<String>(
                 value: organizerType,
-                decoration: InputDecoration(labelText: 'Organizer Type'),
+                decoration: InputDecoration(labelText: 'Organizer Type',labelStyle: TextStyle(color: Color(0xFFCBED54))),
                 validator: (value) => value == null ? 'Please select an organizer type' : null,
                 onChanged: (value) {
                   setState(() {
@@ -282,17 +298,17 @@ class _EditEventScreenState extends State<EditEventScreen> {
                 items: [
                   DropdownMenuItem(
                     value: 'Berbayar',
-                    child: Text('Berbayar'),
+                    child: Text('Berbayar',style: TextStyle(color: Color(0xFFCBED54))),
                   ),
                   DropdownMenuItem(
                     value: 'Tidak Berbayar',
-                    child: Text('Tidak Berbayar'),
+                    child: Text('Tidak Berbayar',style: TextStyle(color: Color(0xFFCBED54))),
                   ),
                 ],
               ),
               DropdownButtonFormField<String>(
                 value: status,
-                decoration: InputDecoration(labelText: 'Status'),
+                decoration: InputDecoration(labelText: 'Status',labelStyle: TextStyle(color: Color(0xFFCBED54))),
                 validator: (value) => value == null ? 'Please select a status' : null,
                 onChanged: (value) {
                   setState(() {
@@ -302,19 +318,19 @@ class _EditEventScreenState extends State<EditEventScreen> {
                 items: [
                   DropdownMenuItem(
                     value: 'Completed',
-                    child: Text('Completed'),
+                    child: Text('Completed',style: TextStyle(color: Color(0xFFCBED54))),
                   ),
                   DropdownMenuItem(
                     value: 'Ongoing',
-                    child: Text('Ongoing'),
+                    child: Text('Ongoing',style: TextStyle(color: Color(0xFFCBED54))),
                   ),
                   DropdownMenuItem(
                     value: 'Upcoming',
-                    child: Text('Upcoming'),
+                    child: Text('Upcoming',style: TextStyle(color: Color(0xFFCBED54))),
                   ),
                   DropdownMenuItem(
                     value: 'Cancelled',
-                    child: Text('Cancelled'),
+                    child: Text('Cancelled',style: TextStyle(color: Color(0xFFCBED54))),
                   ),
                 ],
               ),
